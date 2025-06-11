@@ -26,43 +26,21 @@ const applicationSchema = new mongoose.Schema({
     required: [true, "Please enter your Address!"],
   },
   resume: {
-    public_id: {
-      type: String, 
-      required: true,
-    },
-    url: {
-      type: String, 
-      required: true,
-    },
+    public_id: { type: String, required: true },
+    url: { type: String, required: true },
   },
   applicantID: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    role: {
-      type: String,
-      enum: ["Job Seeker"],
-      required: true,
-    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    role: { type: String, enum: ["Job Seeker"], required: true },
   },
   employerID: {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
-    role: {
-      type: String,
-      enum: ["Employer"],
-      required: true,
-    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    role: { type: String, enum: ["Employer"], required: true },
   },
-  jobId: {
+  job: { // ✅ Renamed from jobId
     type: mongoose.Schema.Types.ObjectId,
     ref: "Job",
-    required: true
+    required: true,
   }
 });
 
