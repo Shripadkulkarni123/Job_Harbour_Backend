@@ -17,12 +17,20 @@ app.use(
     origin: ["https://job-harbour-01.netlify.app", "http://localhost:5173"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
+    exposedHeaders: ["Content-Disposition"],
   })
 );
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Add security headers
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+  next();
+});
 
 app.use(
   fileUpload({
