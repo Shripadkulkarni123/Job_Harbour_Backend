@@ -9,14 +9,7 @@ cloudinary.v2.config({
 
 // Root route
 app.get('/', (req, res) => {
-  res.send(`
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif;">
-      <div style="text-align: center; padding: 20px; border-radius: 10px; background-color: #f0f0f0; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <h1 style="color: #333;">Server is Running Successfully!</h1>
-        <p style="color: #666;">The backend server is up and running on port ${process.env.PORT}</p>
-      </div>
-    </div>
-  `);
+  res.send('Server is Running Successfully!');
 });
 
 app.listen(process.env.PORT, () => {
