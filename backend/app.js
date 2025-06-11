@@ -14,7 +14,7 @@ config({ path: "./config/config.env" });
 
 app.use(
   cors({
-    origin: ["https://job-harbour-10.netlify.app", "http://localhost:5173"],
+    origin: ["https://job-harbour-01.netlify.app/", "http://localhost:5173"],
     method: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
