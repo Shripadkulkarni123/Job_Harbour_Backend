@@ -70,6 +70,7 @@ export const postApplication = catchAsyncErrors(async (req, res, next) => {
     address,
     applicantID,
     employerID,
+    jobId: jobDetails._id,
     resume: {
       public_id: cloudinaryResponse.public_id,
       url: cloudinaryResponse.secure_url,
@@ -108,7 +109,11 @@ export const jobseekerGetAllApplications = catchAsyncErrors(
       );
     }
     const { _id } = req.user;
-    const applications = await Application.find({ "applicantID.user": _id });
+    const applications = await Application.find({ "applicantID.user": _id })
+      .populate({
+        path: 'jobId',
+        select: 'title description category country city location fixedSalary'
+      });
     res.status(200).json({
       success: true,
       applications,
